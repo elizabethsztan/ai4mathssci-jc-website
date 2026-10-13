@@ -24,6 +24,13 @@
     abstract.append(make("h4", "small-label", "ABSTRACT"), make("p", "", session.abstract || "The abstract for this session will be added soon."));
     const logistics = make("div", "logistics");
     logistics.append(make("h4", "small-label", "TIME & LOCATION"), make("p", "", session.time || "Time to be announced"), make("p", "", session.location || "Location to be announced"));
+    if (session.contact) {
+      const contact = make("p", "speaker-contact");
+      const email = make("a", "", session.contact);
+      email.href = `mailto:${session.contact}`;
+      contact.append("Contact: ", email);
+      abstract.append(contact);
+    }
     body.append(abstract, logistics);
     details.append(summary, body);
     document.querySelector("#schedule").append(details);
