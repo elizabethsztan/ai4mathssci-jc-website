@@ -44,10 +44,12 @@
     const links = make("div", "resource-links");
     for (const link of resource.links || []) {
       try {
-        const url = new URL(link.url);
+        // A safe base permits relative resource paths, including in local previews.
+        const url = new URL(link.url, "https://resources.invalid/");
         if (!["https:", "http:"].includes(url.protocol)) continue;
         const anchor = make("a", "", `${link.label} ↗`);
-        anchor.href = url.href;
+        anchor.href = link.url;
+        if (link.download) anchor.setAttribute("download", "");
         links.append(anchor);
       } catch { /* Leave incomplete links off the page until ready. */ }
     }

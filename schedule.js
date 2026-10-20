@@ -15,5 +15,13 @@ window.journalClub = {
   //   { label: "Paper", url: "https://example.org/paper" },
   //   { label: "Slides", url: "https://example.org/slides" }
   // ] }
-  resources: []
+  resources: [
+    {
+      title: "Accessible, Portable, and Formally-Verified Proofwriting with Visual Lean",
+      speaker: "Autumn Mapes · 20 October 2026",
+      links: [
+        { label: "Download slides (PowerPoint)", url: "resources/autumn-mapes-visual-lean.pptx", download: true }
+      ]
+    }
+  ]
 };
